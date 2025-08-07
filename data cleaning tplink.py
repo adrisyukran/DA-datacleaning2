@@ -1,7 +1,12 @@
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv('Mercusys.csv')
+df = pd.read_csv('TPLink.csv')
+
+## Remove unwanted columns
+# Remove first column 'volume-price-tag' if it exists
+if 'volume-price-tag' in df.columns:
+    df = df.drop(columns=['volume-price-tag'])
 
 ## price Cleaning
 # Clean the 'price' column by removing dollar signs and commas, then convert to float
@@ -23,8 +28,8 @@ df['in-stock'] = pd.to_numeric(df['in-stock'], errors='coerce')
 
 
 # Export the cleaned DataFrame to a new CSV file
-df.to_csv('Mercusys_cleaned.csv', index=False)
-print("Cleaned data saved to 'Mercusys_cleaned.csv'")
+df.to_csv('TPLink_cleaned.csv', index=False)
+print("Cleaned data saved to 'TPLink_cleaned.csv'")
 
 
 
